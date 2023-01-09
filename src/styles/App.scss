@@ -1,0 +1,22 @@
+$black: #201230;
+$pink: #cd5492;
+$purple: #5f14a2;
+$purpleDark: darken(#401744, 1%);
+$white: snow;
+$circle: 50%;
+$blobRadius: 43% 45% 43% 44%;
+$duration: 10s;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-decoration: none;
+  color: #000;
+  list-style: none;
+  overflow: hidden;
+  letter-spacing: -1px;
+}
+

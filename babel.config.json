@@ -1,0 +1,44 @@
+{
+    "presets": [
+      ["@babel/preset-env", 
+        {
+          "useBuiltIns": "usage",
+          "corejs": 3,
+          "targets": "> 0.25%, not dead"
+        }
+      ], 
+      ["@babel/preset-react"]
+    ],
+    "plugins": [
+      ["@loadable/babel-plugin"],
+      ["babel-plugin-styled-components", 
+        { "displayName": false }], 
+      "react-require",
+      "transform-class-properties",
+      "react-hot-loader/babel",
+      "@babel/plugin-syntax-jsx",
+      [
+        "module-resolver",
+        {
+            "root": [
+                "/",
+                "./node_modules"
+            ],
+            "extensions": [
+                ".js",
+                ".jsx",
+                ".es",
+                ".es6",
+                ".mjs"
+            ]
+        }
+      ]
+    ],
+    "env": {
+      "test": {
+          "plugins": [
+              "transform-es2015-modules-commonjs"
+          ]
+      }
+    }
+  }
