@@ -10,6 +10,9 @@ import CanvasDraw from 'react-canvas-draw';
 import { HexColorPicker } from 'react-colorful';
 import sdlogo from '../assets/soju_dao.png'
 import bottles from '../assets/beer_bottles.png'
+import vase from '../assets/vase.jpg'
+import cafe from '../assets/cafe.jpg'
+import painting from '../assets/painting.jpg'
 
 export default function App() {
   
@@ -40,7 +43,7 @@ const Hero = () => {
       ) : <div>
       <a href='#'><img src={sdlogo} alt="SojuDAO Logo" className='logo' width={344}/></a>
       <div className='intro_container'>
-      <h2 className='intro'>Sojudao is a digital lifestyle and social dao committed to expanding korea's web3 ecosystem.</h2>
+      <p className='intro'>Sojudao is a digital lifestyle and social dao committed to expanding korea's web3 ecosystem.</p>
       <a href='#'>join the fun</a>
       <img src={bottles} alt='bottles' width={380} />
       </div>
@@ -51,46 +54,57 @@ const Hero = () => {
 
 
 const Body = () => {
+  const width = useWindowWidth()
   const [items, setItems] = useState([
     {
       id: '1',
       name: 'Connect',
       main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
       link: '',
-      image: '',
+      image: cafe,
       image2: '',
       alt_text: '',
       alt_text2: '',
+      width: 380,
     },
     {
       id: '2',
       name: 'Learn',
       main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
       link: '',
-      image: '',
+      image: vase,
       image2: '',
       alt_text: '',
       alt_text2: '',
+      width: 380,
     },
     {
       id: '3',
       name: 'Create',
       main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
       link: '',
-      image: '',
+      image: painting,
       image2: '',
       alt_text: '',
       alt_text2: '',
+      width: 380,
     },
   ])
   return (
     <main>
+      {width > 600 ? (
       <div>
-        {' '}
-        {items.map(function (item) {
-          return <div key={item.id}> {item.name} </div>
-        })}{' '}
-      </div>{' '}
+        
+      </div>):<div>
+      {items.map(function (item) {
+          return <div key={item.id} className="content-body"> 
+          <p className='title'>{item.name}</p>
+          <img src={item.image} width={item.width} className="section-image" />
+          <hr style={{width:380}}/>
+          <p className='desc'>{item.main}</p>
+          </div>
+        })}
+      </div>}
     </main>
   )
 }

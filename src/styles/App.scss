@@ -15,6 +15,12 @@ $duration: 10s;
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Satoshi Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Satoshi Light'), url(./fonts/Satoshi-Light.woff) format('woff');
+  }
 
 * {
   margin: 0;
@@ -25,7 +31,6 @@ $duration: 10s;
   text-decoration: none;
   color: #fff;
   list-style: none;
-  overflow: hidden;
   letter-spacing: 1.6px;
 }
 
@@ -38,6 +43,7 @@ $duration: 10s;
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   overflow-y: auto;
 }
 img{
@@ -69,5 +75,33 @@ header {
       padding: 0.5rem 0 0.2rem;
       width: 65%;
     }
+  }
+}
+
+main{
+  padding: 2rem;
+  line-height: 1.4rem;
+  .content-body{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+    .title{
+      font-size: 3rem;
+    }
+    .section-image{
+      margin: 1rem 0;
+      border-radius: 20px;
+      position: relative;
+    }
+    hr{
+      margin-bottom: 1rem;
+      max-width: 100%;
+    }
+    .desc{
+      width: 100%;
+      font-family: 'Satoshi Light', sans-serif;
+      text-transform: uppercase;
+    }
+    
   }
 }
