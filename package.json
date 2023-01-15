@@ -7,7 +7,7 @@
     "license": "ISC",
     "scripts": {
         "localdev": "webpack serve --config ./webpack.config.js --env mode=development --color",
-        "build": "webpack --config ./webpack.config.js --env mode=production --color",
+        "deploy": "webpack --config ./webpack.config.js --env mode=production --color",
         "eject": "react-scripts eject",
         "test": "jest ./src/js/__tests__/",
         "test:ci": "jest --ci ./src/js/__tests__/",
@@ -155,13 +155,13 @@
         "path-browserify": "^1.0.1",
         "pnpm": "^6.19.1",
         "prettier": "2.4.1",
-        "react": "^17.0.2",
+        "react": "^17.0.1",
         "react-alert": "^7.0.2",
         "react-bootstrap": "^1.6.0",
         "react-dom": "^17.0.1",
         "react-hot-loader": "^4.13.0",
         "react-icons": "^4.3.1",
-        
+        "react-loader-spinner": "3.1.14",
         "react-popup-alert": "^2.0.0",
         "react-quiz-component": "^0.3.8",
         "react-router-dom": "^5.2.0",
@@ -195,6 +195,8 @@
         "webpack-subresource-integrity": "^5.0.0"
     },
     "dependencies": {
+        "react-canvas-draw": "^1.2.1",
+        "react-colorful": "^5.6.1",
         "yarn": "^1.22.19"
     }
 }
