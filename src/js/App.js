@@ -1,13 +1,9 @@
-import '../styles/App.scss';
+import '../styles/App.scss'
 
-import React, {
-  Component,
-  useEffect,
-  useState,
-} from 'react';
+import React, { Component, useEffect, useState } from 'react'
 
-import CanvasDraw from 'react-canvas-draw';
-import { HexColorPicker } from 'react-colorful';
+import CanvasDraw from 'react-canvas-draw'
+import { HexColorPicker, RgbaColorPicker } from 'react-colorful'
 import sdlogo from '../assets/soju_dao.png'
 import bottles from '../assets/beer_bottles.png'
 import vase from '../assets/vase.jpg'
@@ -15,8 +11,6 @@ import cafe from '../assets/cafe.jpg'
 import painting from '../assets/painting.jpg'
 
 export default function App() {
-  
-
   return (
     <div className='App' id='root'>
       <Hero />
@@ -26,6 +20,36 @@ export default function App() {
     </div>
   )
 }
+const useWindowWidth = () => {
+  const [width, setWidth] = useState(window.innerWidth)
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  })
+  return width
+}
+
+const resizableWindow = () => {
+  const [dimensions, setDimensions] = useState({ 
+    height: window.innerHeight,
+    width: window.innerWidth
+  })
+  useEffect(() => {
+    const handleResize = ()  =>
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+      window.addEventListener('resize', handleResize)
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
+    })
+    return dimensions
+}
 
 const Hero = () => {
   const width = useWindowWidth()
@@ -34,24 +58,30 @@ const Hero = () => {
       {width > 600 ? (
         <div>
           <img />
-      <div>
-        Connect. <br />
-        Learn. <br />
-        Create.
-      </div>
+          <div>
+            Connect. <br />
+            Learn. <br />
+            Create.
+          </div>
         </div>
-      ) : <div>
-      <a href='#'><img src={sdlogo} alt="SojuDAO Logo" className='logo' width={344}/></a>
-      <div className='intro_container'>
-      <p className='intro'>Sojudao is a digital lifestyle and social dao committed to expanding korea's web3 ecosystem.</p>
-      <a href='#'>join the fun</a>
-      <img src={bottles} alt='bottles' width={380} />
-      </div>
-    </div>}
+      ) : (
+        <div>
+          <a href='#'>
+            <img src={sdlogo} alt='SojuDAO Logo' className='logo' width={344} />
+          </a>
+          <div className='intro_container'>
+            <p className='intro'>
+              Sojudao is a digital lifestyle and social dao committed to
+              expanding korea's web3 ecosystem.
+            </p>
+            <a href='#'>join the fun</a>
+            <img src={bottles} alt='bottles' width={380} />
+          </div>
+        </div>
+      )}
     </header>
   )
 }
-
 
 const Body = () => {
   const width = useWindowWidth()
@@ -91,65 +121,55 @@ const Body = () => {
     },
   ])
   return (
-    <main>
+    <div className='main-content'>
       {width > 600 ? (
-      <div>
-        
-      </div>):<div>
-      {items.map(function (item) {
-          return <div key={item.id} className="content-body"> 
-          <p className='title'>{item.name}</p>
-          <img src={item.image} width={item.width} className="section-image" />
-          <hr style={{width:380}}/>
-          <p className='desc'>{item.main}</p>
-          </div>
-        })}
-      </div>}
-    </main>
+        <div></div>
+      ) : (
+        <div>
+          {items.map(function (item) {
+            return (
+              <div key={item.id} className='content-body'>
+                <p className='title'>{item.name}</p>
+                <img
+                  src={item.image}
+                  width={item.width}
+                  className='section-image'
+                />
+                <hr style={{ width: 380 }} />
+                <p className='desc'>{item.main}</p>
+              </div>
+            )
+          })}
+        </div>
+      )}
+    </div>
   )
 }
 
-const useWindowWidth = () => {
-  const [width, setWidth] = useState(window.innerWidth)
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth)
-    window.addEventListener('resize', handleResize)
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  })
-  return width
+
+const Playground = () => {
+  const [color, setColor] = useState('#aabbcc')
+  const dimensions = resizableWindow()
+  return (
+    <div className='canvas-fun'>
+      <p className='title'>Draw your soju</p>
+      <Notepad color={color} width={dimensions.width} height={dimensions.height}/>
+      <Picker handleColor={setColor} color={color} />
+    </div>
+  )
 }
 
 const Notepad = (props) => {
   return (
-        <div>
-          <Draw color={props.color} />
-        </div>
+    <div className='notepad'>
+      <Draw color={props.color} width={props.width} height={props.height}/>
+    </div>
   )
 }
-
-const Playground = () => {
-  const [color, setColor] = useState('#aabbcc')
-  const width = useWindowWidth()
-return (
-  <div>
-    {' '}
-      {width > 600 ? (
-        <div>
-          <Notepad color={color} />
-    <Picker handleColor={setColor} color={color} />
-        </div>
-      ) : null}{' '}
-    
-  </div>
-)
-}
-
 class Draw extends Component {
   state = {
-    width: 400,
-    height: 400,
+    width: this.props.width,
+    height: this.props.height,
     brushRadius: 10,
     lazyRadius: 1,
     color: this.props.color,
@@ -236,8 +256,9 @@ class Draw extends Component {
           brushColor={this.props.color}
           brushRadius={this.state.brushRadius}
           lazyRadius={this.state.lazyRadius}
-          canvasWidth={this.state.width}
-          canvasHeight={this.state.height}
+          canvasWidth={this.props.width}
+          canvasHeight={this.props.height}
+          catenaryColor= "#0a0302"
         />{' '}
       </div>
     )
@@ -251,8 +272,8 @@ const Picker = (props) => {
       {' '}
       {width > 600 ? (
         <div>
-          <HexColorPicker color={props.color} onChange={props.handleColor} />; The current color
-      is: {props.color}{' '}
+          <HexColorPicker color={props.color} onChange={props.handleColor} />;
+          The current color is: {props.color}{' '}
         </div>
       ) : null}{' '}
     </div>
