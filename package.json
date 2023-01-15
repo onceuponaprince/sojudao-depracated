@@ -6,8 +6,8 @@
     "author": "Prince",
     "license": "ISC",
     "scripts": {
-        "localdev": "webpack serve --config ./webpack.config.js --env mode=development --color",
-        "deploy": "webpack --config ./webpack.config.js --env mode=production --color",
+        "start": "webpack serve --config ./webpack.config.js --env mode=development --color",
+        "build": "webpack --config ./webpack.config.js --env mode=production --color",
         "eject": "react-scripts eject",
         "test": "jest ./src/js/__tests__/",
         "test:ci": "jest --ci ./src/js/__tests__/",
