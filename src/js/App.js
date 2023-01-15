@@ -8,20 +8,47 @@ import React, {
 
 import CanvasDraw from 'react-canvas-draw';
 import { HexColorPicker } from 'react-colorful';
+import sdlogo from '../assets/soju_dao.png'
+import bottles from '../assets/beer_bottles.png'
 
 export default function App() {
-  const [color, setColor] = useState('#aabbcc')
+  
 
   return (
     <div className='App' id='root'>
       <Hero />
       <Body />
-      <Notepad color={color} />
-      <Picker handleColor={setColor} color={color} />
+      <Playground />
       <Footer />
     </div>
   )
 }
+
+const Hero = () => {
+  const width = useWindowWidth()
+  return (
+    <header>
+      {width > 600 ? (
+        <div>
+          <img />
+      <div>
+        Connect. <br />
+        Learn. <br />
+        Create.
+      </div>
+        </div>
+      ) : <div>
+      <a href='#'><img src={sdlogo} alt="SojuDAO Logo" className='logo' width={344}/></a>
+      <div className='intro_container'>
+      <h2 className='intro'>Sojudao is a digital lifestyle and social dao committed to expanding korea's web3 ecosystem.</h2>
+      <a href='#'>join the fun</a>
+      <img src={bottles} alt='bottles' width={380} />
+      </div>
+    </div>}
+    </header>
+  )
+}
+
 
 const Body = () => {
   const [items, setItems] = useState([
@@ -67,20 +94,6 @@ const Body = () => {
     </main>
   )
 }
-const Hero = () => {
-  return (
-    <header>
-      <div>
-        <img />
-        <div>
-          Connect. <br />
-          Learn. <br />
-          Create.{' '}
-        </div>{' '}
-      </div>{' '}
-    </header>
-  )
-}
 
 const useWindowWidth = () => {
   const [width, setWidth] = useState(window.innerWidth)
@@ -95,17 +108,28 @@ const useWindowWidth = () => {
 }
 
 const Notepad = (props) => {
-  const width = useWindowWidth()
   return (
-    <div>
-      {' '}
-      {width > 600 ? (
         <div>
           <Draw color={props.color} />
         </div>
-      ) : null}{' '}
-    </div>
   )
+}
+
+const Playground = () => {
+  const [color, setColor] = useState('#aabbcc')
+  const width = useWindowWidth()
+return (
+  <div>
+    {' '}
+      {width > 600 ? (
+        <div>
+          <Notepad color={color} />
+    <Picker handleColor={setColor} color={color} />
+        </div>
+      ) : null}{' '}
+    
+  </div>
+)
 }
 
 class Draw extends Component {
@@ -207,10 +231,16 @@ class Draw extends Component {
 }
 
 const Picker = (props) => {
+  const width = useWindowWidth()
   return (
     <div>
-      <HexColorPicker color={props.color} onChange={props.handleColor} />; The current color
+      {' '}
+      {width > 600 ? (
+        <div>
+          <HexColorPicker color={props.color} onChange={props.handleColor} />; The current color
       is: {props.color}{' '}
+        </div>
+      ) : null}{' '}
     </div>
   )
 }
