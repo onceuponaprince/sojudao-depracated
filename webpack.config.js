@@ -95,7 +95,7 @@ module.exports = ({ mode } = { mode: 'development' }) => {
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
-        title: 'Code Funhouse - Coding without the boring stuff',
+        title: "SojuDAO - Korea's First social DAO",
         template: 'index.html',
         inject: 'body',
       }),
