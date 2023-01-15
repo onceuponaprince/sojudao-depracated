@@ -289,7 +289,7 @@ const Picker = (props) => {
 const Footer = () => {
   return (
     <footer>
-      <p className='title'> Contact Us </p>
+      <p className='footer-title'> Contact Us </p>
       <section>
         <ul className='social-links'>
           <li>
@@ -310,7 +310,7 @@ const Footer = () => {
           </li>{' '}
         </ul>{' '}
       </section>{' '}
-      <small className='desc'> SOJUDAO Copyright 2023 </small><br/>
+      <small className='desc'> SOJUDAO © Copyright 2023 </small>
       <small className='desc'> ALL RIGHTS RESERVED </small>
     </footer>
   )

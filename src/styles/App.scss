@@ -71,27 +71,27 @@ header {
     display: flex;
     flex-direction: column;
     .intro {
-      margin-top: 10rem;
+      margin-top: 15rem;
       font-size: 2rem;
       line-height: 2.4rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
     a {
       justify-self: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       border: 1px #fff solid;
       text-align: center;
       border-radius: 25px;
-      font-size: 2rem;
-      padding: 0.5rem 0 0.2rem;
-      width: 65%;
+      font-size: 1.5rem;
+      padding: 0.6rem 0 0.4rem;
+      width: 75%;
     }
   }
 }
 
 .main-content {
   width: 100%;
-  padding: 3.5rem 2rem 1rem;
+  padding: 4.5rem 2rem 1rem;
   line-height: 1.4rem;
   .content-body {
     display: flex;
@@ -123,25 +123,32 @@ header {
 }
 .title {
   font-size: 3rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 footer{
   background-color: #44704b;
   width: 100%;
-  padding: 2rem;
+  padding: 3rem 2rem;
+ .footer-title{
+  font-size: 2rem;
+  margin-bottom: 3rem;
+ }
   .social-links{
     li{
       position: relative;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       &:before{
         content: "";
   width: 100%;
   position: absolute;
   left: 0;
-  top: -5px;
+  top: -0.8rem;
   height: 1px;
-  background: #f5e8cf;
+  background: #fff;
+      }
+      p{
+        font-weight: bold;
       }
     }
   }
