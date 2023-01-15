@@ -3,7 +3,7 @@ import '../styles/App.scss'
 import React, { Component, useEffect, useState } from 'react'
 
 import CanvasDraw from 'react-canvas-draw'
-import { HexColorPicker, RgbaColorPicker } from 'react-colorful'
+import { HexColorPicker } from 'react-colorful'
 import sdlogo from '../assets/soju_dao.png'
 import bottles from '../assets/beer_bottles.png'
 import vase from '../assets/vase.jpg'
@@ -34,14 +34,14 @@ const useWindowWidth = () => {
 
 const resizableWindow = () => {
   const [dimensions, setDimensions] = useState({ 
-    height: window.innerHeight,
-    width: window.innerWidth
+    height: window.innerHeight / 1.8,
+    width: window.innerWidth / 1.1
   })
   useEffect(() => {
     const handleResize = ()  =>
       setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth
+        height: window.innerHeight / 1.8,
+        width: window.innerWidth / 1.1
       })
       window.addEventListener('resize', handleResize)
       return () => {
@@ -173,10 +173,24 @@ class Draw extends Component {
     brushRadius: 10,
     lazyRadius: 1,
     color: this.props.color,
+    backgroundColor: "rgba(250, 5, 10, 0",
+    gridColor: "#C7BCA8",
+    catenaryColor: this.props.color
   }
   render() {
     return (
-      <div>
+      <div className="draw-canvas">
+        <CanvasDraw
+          ref={(canvasDraw) => (this.saveableCanvas = canvasDraw)}
+          brushColor={this.props.color}
+          brushRadius={this.state.brushRadius}
+          lazyRadius={this.state.lazyRadius}
+          canvasWidth={this.props.width}
+          canvasHeight={this.props.height}
+          backgroundColor={this.state.backgroundColor}
+          gridColor={this.state.gridColor}
+          catenaryColor={this.state.catenaryColor}
+        />
         <div>
           <button
             onClick={() => {
@@ -251,15 +265,7 @@ class Draw extends Component {
             />{' '}
           </div>{' '}
         </div>{' '}
-        <CanvasDraw
-          ref={(canvasDraw) => (this.saveableCanvas = canvasDraw)}
-          brushColor={this.props.color}
-          brushRadius={this.state.brushRadius}
-          lazyRadius={this.state.lazyRadius}
-          canvasWidth={this.props.width}
-          canvasHeight={this.props.height}
-          catenaryColor= "#0a0302"
-        />{' '}
+        
       </div>
     )
   }
@@ -283,27 +289,29 @@ const Picker = (props) => {
 const Footer = () => {
   return (
     <footer>
-      <h2> Contact Us </h2>{' '}
+      <p className='title'> Contact Us </p>
       <section>
         <ul className='social-links'>
           <li>
-            <a href='#'>
-              <img alt='sns logos go here' width={16} />{' '}
+            <p className='desc'>Website</p>
+            <a href='#' className='desc'>Sojudao.xyz</a>
+          </li>
+          <li>
+            <p className='desc'>Twitter</p>
+            <a href='#' className='desc'>
+              @SojuDAO_
             </a>{' '}
           </li>{' '}
           <li>
-            <a href='#'>
-              <img alt='sns logos go here' width={16} />{' '}
-            </a>{' '}
-          </li>{' '}
-          <li>
-            <a href='#'>
-              <img alt='sns logos go here' width={16} />{' '}
+            <p className='desc'>Email</p>
+            <a href='#' className='desc'>
+              drink@sojudao.xyz
             </a>{' '}
           </li>{' '}
         </ul>{' '}
       </section>{' '}
-      <small> Copyright 2022 </small>{' '}
+      <small className='desc'> SOJUDAO Copyright 2023 </small><br/>
+      <small className='desc'> ALL RIGHTS RESERVED </small>
     </footer>
   )
 }

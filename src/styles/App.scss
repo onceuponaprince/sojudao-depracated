@@ -43,6 +43,10 @@ body{
   color: #fff;
 }
 
+a{
+  color: #fff;
+}
+
 #root {
   background-color: #000;
   margin: 0 auto;
@@ -102,23 +106,47 @@ header {
       margin-bottom: 1rem;
       max-width: 100%;
     }
-    .desc {
-      font-family: 'Satoshi Light', sans-serif;
-      text-transform: uppercase;
-      max-width: 380px;
-    }
   }
+}
+
+.desc {
+  font-family: 'Satoshi Light', sans-serif;
+  text-transform: uppercase;
+  max-width: 380px;
 }
 
 .canvas-fun{
   width: 100%;
   background-color: #f5e8cf;
   color: #000;
-  p{
-    padding: 2rem;
+  padding: 2rem;
+}
+.title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+footer{
+  background-color: #44704b;
+  width: 100%;
+  padding: 2rem;
+  .social-links{
+    li{
+      position: relative;
+      margin-bottom: 2rem;
+      &:before{
+        content: "";
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: -5px;
+  height: 1px;
+  background: #f5e8cf;
+      }
+    }
+  }
+  small{
+    font-size: 0.5rem;
   }
 }
 
-.title {
-  font-size: 3rem;
-}
