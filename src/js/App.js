@@ -9,6 +9,7 @@ import bottles from '../assets/beer_bottles.png'
 import vase from '../assets/vase.jpg'
 import cafe from '../assets/cafe.jpg'
 import painting from '../assets/painting.jpg'
+import emailjs from 'emailjs-com'
 
 export default function App() {
   return (
@@ -214,14 +215,25 @@ class Draw extends Component {
             />
           </div>{' '}
         <div className='btn-container'>
-        <button
-            onClick={() => {
+        <input type="submit"
+        value="Submit"
+        name='message'
+            onClick={(e) => {
               console.log(this.saveableCanvas.getDataURL());
-              alert("DataURL written to console")
+              const templateParams = {
+                message: this.saveableCanvas.getDataURL()
+            }
+            e.preventDefault(); // Prevents default refresh by the browser
+      emailjs.send('service_yjki0uu', 'template_sj55q9q', templateParams, 'UKLIYyqMYG3AgVpNm')
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+       alert("Message Sent, We will get back to you shortly");
+    }, function(error) {
+       console.log('FAILED...', error);
+       alert("An error occurred, Please try again");
+    });
             }}
-          >
-            Submit{' '}
-          </button>{' '}
+          />
           <button
             onClick={() => {
               this.saveableCanvas.eraseAll()
