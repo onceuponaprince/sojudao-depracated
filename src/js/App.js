@@ -35,13 +35,13 @@ const useWindowWidth = () => {
 const resizableWindow = () => {
   const [dimensions, setDimensions] = useState({ 
     height: window.innerHeight / 1.8,
-    width: window.innerWidth / 1.1
+    width: window.innerWidth
   })
   useEffect(() => {
     const handleResize = ()  =>
       setDimensions({
         height: window.innerHeight / 1.8,
-        width: window.innerWidth / 1.1
+        width: window.innerWidth
       })
       window.addEventListener('resize', handleResize)
       return () => {
@@ -70,10 +70,10 @@ const Hero = () => {
             <img src={sdlogo} alt='SojuDAO Logo' className='logo' width={344} />
           </a>
           <div className='intro_container'>
-            <p className='intro'>
+            <h3 className='intro'>
               Sojudao is a digital lifestyle and social dao committed to
               expanding korea's web3 ecosystem.
-            </p>
+            </h3>
             <a href='#'>join the fun</a>
             <img src={bottles} alt='bottles' width={380} />
           </div>
@@ -149,12 +149,22 @@ const Body = () => {
 
 const Playground = () => {
   const [color, setColor] = useState('#aabbcc')
+  const [isOpen, setIsOpen] = useState(true)
   const dimensions = resizableWindow()
+
+  const handleOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <div className='canvas-fun'>
+      <div className='canvas-header'>
       <p className='title'>Draw your soju</p>
+      <button onClick={handleOpen} style={{backgroundColor: color, border: 'none', height: '40px', width:'40px'}} />
+      </div>
+      {isOpen && <Picker handleColor={setColor} color={color} isOpen={isOpen} />}
       <Notepad color={color} width={dimensions.width} height={dimensions.height}/>
-      <Picker handleColor={setColor} color={color} />
+      
     </div>
   )
 }
@@ -181,6 +191,7 @@ class Draw extends Component {
     return (
       <div className="draw-canvas">
         <CanvasDraw
+        className='notepad-draw'
           ref={(canvasDraw) => (this.saveableCanvas = canvasDraw)}
           brushColor={this.props.color}
           brushRadius={this.state.brushRadius}
@@ -189,18 +200,27 @@ class Draw extends Component {
           canvasHeight={this.props.height}
           backgroundColor={this.state.backgroundColor}
           gridColor={this.state.gridColor}
-          catenaryColor={this.state.catenaryColor}
+          catenaryColor={this.props.color}
         />
-        <div>
-          <button
+        <div className='brush'>
+            <input
+              type='range'
+              min={1}
+              max={300}
+              value={this.state.brushRadius}
+              onChange={(e) =>
+                this.setState({ brushRadius: parseInt(e.target.value, 10) })
+              }
+            />
+          </div>{' '}
+        <div className='btn-container'>
+        <button
             onClick={() => {
-              localStorage.setItem(
-                'savedDrawing',
-                this.saveableCanvas.getSaveData()
-              )
+              console.log(this.saveableCanvas.getDataURL());
+              alert("DataURL written to console")
             }}
           >
-            Save{' '}
+            Submit{' '}
           </button>{' '}
           <button
             onClick={() => {
@@ -216,54 +236,6 @@ class Draw extends Component {
           >
             Undo{' '}
           </button>{' '}
-          <button
-            onClick={() => {
-              console.log(this.saveableCanvas.getDataURL())
-              alert('DataURL written to console')
-            }}
-          >
-            GetDataURL{' '}
-          </button>{' '}
-          <div>
-            <label> Width: </label>{' '}
-            <input
-              type='number'
-              value={this.state.width}
-              onChange={(e) =>
-                this.setState({ width: parseInt(e.target.value, 10) })
-              }
-            />{' '}
-          </div>{' '}
-          <div>
-            <label> Height: </label>{' '}
-            <input
-              type='number'
-              value={this.state.height}
-              onChange={(e) =>
-                this.setState({ height: parseInt(e.target.value, 10) })
-              }
-            />{' '}
-          </div>{' '}
-          <div>
-            <label> Brush - Radius: </label>{' '}
-            <input
-              type='number'
-              value={this.state.brushRadius}
-              onChange={(e) =>
-                this.setState({ brushRadius: parseInt(e.target.value, 10) })
-              }
-            />{' '}
-          </div>{' '}
-          <div>
-            <label> Lazy - Radius: </label>{' '}
-            <input
-              type='number'
-              value={this.state.lazyRadius}
-              onChange={(e) =>
-                this.setState({ lazyRadius: parseInt(e.target.value, 10) })
-              }
-            />{' '}
-          </div>{' '}
         </div>{' '}
         
       </div>
@@ -272,16 +244,14 @@ class Draw extends Component {
 }
 
 const Picker = (props) => {
-  const width = useWindowWidth()
+  
+  
   return (
-    <div>
-      {' '}
-      {width > 600 ? (
-        <div>
-          <HexColorPicker color={props.color} onChange={props.handleColor} />;
-          The current color is: {props.color}{' '}
-        </div>
-      ) : null}{' '}
+    <div className='color-box'>
+      <div className='color-picker' >
+      <HexColorPicker color={props.color} onChange={props.handleColor} className="show-box" />
+    </div>
+    
     </div>
   )
 }

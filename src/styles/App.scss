@@ -75,6 +75,7 @@ header {
       font-size: 2rem;
       line-height: 2.4rem;
       margin-bottom: 2rem;
+      letter-spacing: 0.3rem;
     }
     a {
       justify-self: center;
@@ -85,6 +86,8 @@ header {
       font-size: 1.5rem;
       padding: 0.6rem 0 0.4rem;
       width: 75%;
+      font-weight: bolder;
+      letter-spacing: 0.3rem;
     }
   }
 }
@@ -119,7 +122,7 @@ header {
   width: 100%;
   background-color: #f5e8cf;
   color: #000;
-  padding: 2rem;
+  position: relative;
 }
 .title {
   font-size: 3rem;
@@ -157,3 +160,119 @@ footer{
   }
 }
 
+.brush{
+  padding: 0 2rem;
+  width: 100%;
+}
+
+input[type='range'] {
+	-webkit-appearance: none;
+  border: none;
+  width: 100%;
+  margin: 3rem 0;
+  &::-webkit-slider-runnable-track {
+    height: 1px;
+    background: #000;
+    border: none;
+    border-radius: 1px;
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 1px black solid;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #f5e8cf;
+    margin-top: -9px;
+  }
+}
+
+button{
+  background: none;
+    color: inherit;
+    border: 1px black solid;
+    padding: 1rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+    justify-self: center;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      border-radius: 25px;
+      font-size: 1.5rem;
+      padding: 0.6rem 0 0.4rem;
+      width: 30%;
+}
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.color-picker .react-colorful{
+  border-radius: 35px;
+}
+.color-picker{
+  display: flex;
+  align-content: center;
+  padding: 0 2rem 2rem;
+  width: 100%;
+}
+
+.color-picker .react-colorful__hue {
+  border-radius: 25px;
+  padding: 0;
+}
+
+.react-colorful {
+  height: 10px !important;
+  width: 100% !important;
+}
+.color-picker .react-colorful__saturation{
+  display: none;
+}
+.color-box{
+  p{
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+.canvas-header{
+  display: flex;
+  padding: 2rem 2rem 1rem;
+  align-content: center;
+  justify-content: space-between;
+  
+  button {
+    padding: 0;
+    margin: 0 0 0 1rem;
+  }
+}
+
+@-webkit-keyframes SHOW-BOX {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes SHOW-BOX {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes SHOW-BOX {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes SHOW-BOX {
+  0%   { width: 0; opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.show-box {
+  -webkit-animation: SHOW-BOX 2s ease;
+  -moz-animation: SHOW-BOX 2s ease;
+  -o-animation: SHOW-BOX 2s ease;
+  animation: SHOW-BOX 500ms ease-in-out;
+}
