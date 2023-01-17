@@ -220,11 +220,10 @@ class Draw extends Component {
         name='message'
             onClick={(e) => {
               console.log(this.saveableCanvas.getDataURL());
-              const templateParams = {
-                message: this.saveableCanvas.getDataURL()
-            }
+              const message = this.saveableCanvas.getDataURL()
+            
             e.preventDefault(); // Prevents default refresh by the browser
-      emailjs.send('service_yjki0uu', 'template_sj55q9q', templateParams, 'UKLIYyqMYG3AgVpNm')
+      emailjs.send('service_yjki0uu', 'template_sj55q9q', {content: message}, 'UKLIYyqMYG3AgVpNm')
     .then(function(response) {
        console.log('SUCCESS!', response.status, response.text);
        alert("Message Sent, We will get back to you shortly");
