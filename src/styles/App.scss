@@ -75,7 +75,6 @@ header {
       font-size: 2rem;
       line-height: 2.4rem;
       margin-bottom: 2rem;
-      font-weight: bolder;
     }
     a {
       justify-self: center;
@@ -86,7 +85,6 @@ header {
       font-size: 1.5rem;
       padding: 0.6rem 0 0.4rem;
       width: 75%;
-      font-weight: bolder;
     }
   }
 }
@@ -224,9 +222,9 @@ input[type='submit'], button{
   padding: 0;
 }
 
-.react-colorful {
+.color-picker .react-colorful {
   height: 10px !important;
-  width: 100% !important;
+  width: 100%;
 }
 .color-picker .react-colorful__saturation{
   display: none;
