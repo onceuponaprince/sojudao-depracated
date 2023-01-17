@@ -9,7 +9,7 @@ import bottles from '../assets/beer_bottles.png'
 import vase from '../assets/vase.jpg'
 import cafe from '../assets/cafe.jpg'
 import painting from '../assets/painting.jpg'
-import emailjs from 'emailjs-com'
+import emailjs from '@emailjs/browser';
 
 export default function App() {
   return (
@@ -71,10 +71,10 @@ const Hero = () => {
             <img src={sdlogo} alt='SojuDAO Logo' className='logo' width={344} />
           </a>
           <div className='intro_container'>
-            <h3 className='intro'>
+            <p className='intro'>
               Sojudao is a digital lifestyle and social dao committed to
               expanding korea's web3 ecosystem.
-            </h3>
+            </p>
             <a href='#'>join the fun</a>
             <img src={bottles} alt='bottles' width={380} />
           </div>
