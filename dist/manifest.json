@@ -1,8 +1,0 @@
-{
-  "main.css": "/main.css",
-  "main.js": "/static/js/main.js",
-  "reactVendor.js": "/static/js/reactVendor.js",
-  "lodashVendor.js": "/static/js/lodashVendor.js",
-  "static/js/381.js": "/static/js/381.js",
-  "index.html": "/index.html"
-}
