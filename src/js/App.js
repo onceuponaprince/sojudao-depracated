@@ -9,6 +9,9 @@ import bottles from '../assets/beer_bottles.png'
 import vase from '../assets/vase.jpg'
 import cafe from '../assets/cafe.jpg'
 import painting from '../assets/painting.jpg'
+import paintbrushes from '../assets/paintbrushes_art.jpg'
+import poster from '../assets/fun_poster.png'
+import table from '../assets/table_learn.jpg'
 import emailjs from '@emailjs/browser';
 
 export default function App() {
@@ -67,6 +70,7 @@ const Hero = () => {
             Create.
             </div>
           </div>
+          
         </div>
       ) : (
         <div className='header-container'>
@@ -96,7 +100,7 @@ const Body = () => {
       main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
       link: '',
       image: cafe,
-      image2: '',
+      image2: poster,
       alt_text: '',
       alt_text2: '',
       width: 380,
@@ -107,7 +111,7 @@ const Body = () => {
       main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
       link: '',
       image: vase,
-      image2: '',
+      image2: table,
       alt_text: '',
       alt_text2: '',
       width: 380,
@@ -118,35 +122,62 @@ const Body = () => {
       main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
       link: '',
       image: painting,
-      image2: '',
+      image2: paintbrushes,
       alt_text: '',
       alt_text2: '',
       width: 380,
     },
   ])
   return (
-    <div className='main-content'>
-      {width > 600 ? (
-        <div></div>
+    <main>
+      {width > 922 ? (
+        <div className='desktop-main'>
+        {items.map(function (item) {
+          return (
+            <div key={item.id} className='desktop-content-body'>
+             <div className='desktop-content-text'>
+             <hr/>
+             <p className='title'>{item.name}</p>
+              
+              <p className='desc'>{item.main}</p>
+             </div>
+            <div className='desktop-image-container'>
+            <img
+                src={item.image}
+                width={item.width}
+                className='desktop-section-image'
+              />
+              <img
+                src={item.image}
+                width={item.width}
+                className='desktop-section-image'
+              />
+            </div>
+            </div>
+          )
+        })}
+      </div>
       ) : (
         <div>
           {items.map(function (item) {
             return (
-              <div key={item.id} className='content-body'>
+              <div className='main-content'>
+                <div key={item.id} className='content-body'>
                 <p className='title'>{item.name}</p>
                 <img
                   src={item.image}
                   width={item.width}
                   className='section-image'
                 />
-                <hr style={{ width: 380 }} />
+                <hr />
                 <p className='desc'>{item.main}</p>
+              </div>
               </div>
             )
           })}
         </div>
       )}
-    </div>
+    </main>
   )
 }
 
@@ -271,6 +302,7 @@ const Picker = (props) => {
 }
 
 const Footer = () => {
+  const width = useWindowWidth()
   return (
     <footer>
       <p className='footer-title'> Contact Us </p>
