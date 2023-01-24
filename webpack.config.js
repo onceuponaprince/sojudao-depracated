@@ -5,7 +5,6 @@ const devConfig = require('./webpack.dev.js')
 const prodConfig = require('./webpack.prod.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = ({ mode } = { mode: 'development' }) => {
   console.log(`mode is: ${mode}`)
@@ -24,28 +23,6 @@ module.exports = ({ mode } = { mode: 'development' }) => {
     },
     module: {
       rules: [
-        /*{
-          test: /((images|logo)\/\w+\.svg$)|(\.(png|jpe?g|gif)$)/i,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'static/images/[name].[ext]',
-              },
-            },
-          ],
-        },
-        {
-          test: /((fonts)\/\w+\/\w+\.svg$)|(\.(eot|ttf|woff|woff2)$)/i,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'static/fonts/[folder]/[name].[ext]',
-              },
-            },
-          ],
-        },*/
         {
           test: /\.mp4$/i,
           use: [
@@ -58,7 +35,7 @@ module.exports = ({ mode } = { mode: 'development' }) => {
           ],
         },
         {
-          test: /\.(jpe?g|svg|png|gif|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
+          test: /\.(jpe?g|svg|png|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
           type: 'asset/resource',
         },
         {
@@ -100,7 +77,6 @@ module.exports = ({ mode } = { mode: 'development' }) => {
         template: 'index.html',
         inject: 'body'
       }),
-      new FaviconsWebpackPlugin(path.resolve(__dirname, './favicon.ico')),
     ]
   });
   return config

@@ -15,9 +15,12 @@ import table from '../assets/table_learn.jpg'
 import pentagon from '../assets/pentagon.png'
 import star from '../assets/star.png'
 import diamond from '../assets/diamond.png'
+import favicon from '../assets/favicon.ico'
 import emailjs from '@emailjs/browser';
 
 export default function App() {
+  const faviconEl = document.querySelector('[rel="shortcut icon"]');
+  faviconEl.href = favicon;
   return (
     <div className='App' id='root'>
       <Hero />
