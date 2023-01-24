@@ -97,7 +97,7 @@ const Body = () => {
     {
       id: '1',
       name: 'Connect',
-      main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
+      main: 'Have a drink, socialize, make friends, and have a good time.',
       link: '',
       image: cafe,
       image2: poster,
@@ -108,7 +108,7 @@ const Body = () => {
     {
       id: '2',
       name: 'Learn',
-      main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
+      main: 'Have a drink, socialize, make friends, and have a good time.',
       link: '',
       image: vase,
       image2: table,
@@ -119,7 +119,7 @@ const Body = () => {
     {
       id: '3',
       name: 'Create',
-      main: 'Have a drink, socialize, make friends, and have a good time. Connect with the most influential people in Web2 and Web3.',
+      main: 'Connect with the most influential people in Web2 and Web3.',
       link: '',
       image: painting,
       image2: paintbrushes,
@@ -130,7 +130,7 @@ const Body = () => {
   ])
   return (
     <main>
-      {width > 922 ? (
+      {width > 720 ? (
         <div className='desktop-main'>
         {items.map(function (item) {
           return (
@@ -305,6 +305,44 @@ const Footer = () => {
   const width = useWindowWidth()
   return (
     <footer>
+      {width > 600 ? (
+      <div className='desktop-footer'>
+      <p className='footer-title'> Contact Us </p>
+      <div className='intro_container'>
+            <p className='intro'>
+              Sojudao is a digital lifestyle and social dao committed to
+              expanding korea's web3 ecosystem.
+            </p>
+            <a href='#'>join the fun</a>
+          </div>
+      <section>
+        <ul className='desktop-form'>
+          <li>
+            <hr />
+            <p className='desc'>Website</p>
+            <a href='#' className='desc'>Sojudao.xyz</a>
+          </li>
+          <li>
+          <hr />
+            <p className='desc'>Twitter</p>
+            <a href='#' className='desc'>
+              @SojuDAO_
+            </a>{' '}
+          </li>{' '}
+          <li>
+          <hr />
+            <p className='desc'>Email</p>
+            <a href='#' className='desc'>
+              drink@sojudao.xyz
+            </a>{' '}
+          </li>{' '}
+        </ul>{' '}
+      </section>{' '}
+      <small className='desc'> SOJUDAO © Copyright 2023 </small>
+      <small className='desc'> ALL RIGHTS RESERVED </small>
+    </div>):
+    (
+      <div className='mobile-footer'>
       <p className='footer-title'> Contact Us </p>
       <section>
         <ul className='social-links'>
@@ -328,6 +366,8 @@ const Footer = () => {
       </section>{' '}
       <small className='desc'> SOJUDAO © Copyright 2023 </small>
       <small className='desc'> ALL RIGHTS RESERVED </small>
+    </div>
+    )}
     </footer>
   )
 }
