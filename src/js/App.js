@@ -32,10 +32,9 @@ const useWindowWidth = () => {
   })
   return width
 }
-
 const resizableWindow = () => {
   const [dimensions, setDimensions] = useState({ 
-    height: window.innerHeight / 1.8,
+    height: window.innerHeight / 1.5,
     width: window.innerWidth
   })
   useEffect(() => {
@@ -57,16 +56,20 @@ const Hero = () => {
   return (
     <header>
       {width > 600 ? (
-        <div>
-          <img />
-          <div>
+        <div className='hero-image'>
+          <div className='hero-overlay'>
+            <div className='hero-logo'>
+            <a href='#'>Welcome to SojuDao</a>
+            </div>
+            <div className='hero-text'>
             Connect. <br />
             Learn. <br />
             Create.
+            </div>
           </div>
         </div>
       ) : (
-        <div>
+        <div className='header-container'>
           <a href='#'>
             <img src={sdlogo} alt='SojuDAO Logo' className='logo' width={344} />
           </a>
