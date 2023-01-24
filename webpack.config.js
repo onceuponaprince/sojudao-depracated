@@ -97,7 +97,7 @@ module.exports = ({ mode } = { mode: 'development' }) => {
         filename: 'index.html',
         title: "SojuDAO - Korea's First social DAO",
         template: 'index.html',
-        inject: 'body',
+        inject: 'body'
       }),
     ]
   });
