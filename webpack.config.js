@@ -24,28 +24,6 @@ module.exports = ({ mode } = { mode: 'development' }) => {
     },
     module: {
       rules: [
-        /*{
-          test: /((images|logo)\/\w+\.svg$)|(\.(png|jpe?g|gif)$)/i,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'static/images/[name].[ext]',
-              },
-            },
-          ],
-        },
-        {
-          test: /((fonts)\/\w+\/\w+\.svg$)|(\.(eot|ttf|woff|woff2)$)/i,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: 'static/fonts/[folder]/[name].[ext]',
-              },
-            },
-          ],
-        },*/
         {
           test: /\.mp4$/i,
           use: [
