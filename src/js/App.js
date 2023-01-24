@@ -12,6 +12,9 @@ import painting from '../assets/painting.jpg'
 import paintbrushes from '../assets/paintbrushes_art.jpg'
 import poster from '../assets/fun_poster.png'
 import table from '../assets/table_learn.jpg'
+import pentagon from '../assets/pentagon.png'
+import star from '../assets/star.png'
+import diamond from '../assets/diamond.png'
 import emailjs from '@emailjs/browser';
 
 export default function App() {
@@ -63,6 +66,9 @@ const Hero = () => {
           <div className='hero-overlay'>
             <div className='hero-logo'>
             <a href='#'>Welcome to SojuDao</a>
+            <img src={star}/>
+          <img src={pentagon}/>
+          <img src={diamond}/>
             </div>
             <div className='hero-text'>
             Connect. <br />

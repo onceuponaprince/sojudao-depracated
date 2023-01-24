@@ -288,6 +288,7 @@ input[type='submit'], button{
   background-repeat: no-repeat;
   background-size: 5000px;
   opacity: 0.9;
+  position: relative;
 }
 .hero-overlay{
   display: flex;
@@ -295,7 +296,6 @@ input[type='submit'], button{
   align-items: center;
   justify-content: center;
   height: 100%;
-  position: relative;
   &:before {
     content: ' ';
     display: block;
@@ -314,8 +314,28 @@ input[type='submit'], button{
 
 .hero-logo{
   margin-bottom: 12rem;
+  position: relative;
   a{
     font-size: 1.5rem;
+  }
+  img{
+    position: absolute;
+    z-index: -1;
+    &:nth-child(2){
+      width: 15rem;
+      left: 10px;
+      bottom: -1rem;
+    }
+    &:nth-child(3){
+      width: 15rem;
+      left: 200px;
+      top: 45rem;
+    }
+    &:nth-child(4){
+      width: 10rem;
+      right: 25rem;
+      top: 15rem;
+    }
   }
 }
 
